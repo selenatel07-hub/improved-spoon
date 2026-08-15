@@ -1,0 +1,70 @@
+/* All */
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Index.html page */
+
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.step-row:hover .step-content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.team-card:hover .team-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Apply.html page */
+
+.form-input {
+    background-color: rgba(10, 17, 40, 0.5);
+    border: 1px solid #26396f;
+    padding: 0.85rem 1rem;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
+}
+
+.step-indicator.active {
+    color: #d4af37;
+    border-color: #d4af37;
+}
+
+.step-indicator.completed {
+    background-color: #d4af37;
+    color: #0a1128;
+    border-color: #d4af37;
+}
+
+.file-upload-zone:hover {
+    border-color: #d4af37;
+    background-color: rgba(20, 30, 63, 0.8);
+}
