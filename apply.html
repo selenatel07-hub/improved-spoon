@@ -464,35 +464,6 @@
             }
         });
 
-        // Notification helper
-        function showNotification(icon, title, text, isSuccess = false) {
-            const notif = document.getElementById('notification');
-            const content = document.getElementById('notificationContent');
-            const notifIcon = document.getElementById('notificationIcon');
-            const notifTitle = document.getElementById('notificationTitle');
-            const notifText = document.getElementById('notificationText');
-
-            notifIcon.className = icon + ' mt-1 text-2xl';
-            notifIcon.style.color = isSuccess ? '#d4af37' : '#ff6b6b';
-            notifTitle.textContent = title;
-            notifText.textContent = text;
-
-            if (isSuccess) {
-                content.classList.remove('border-line');
-                content.classList.add('border-gold', 'bg-surface');
-            } else {
-                content.classList.add('border-line');
-            }
-
-            notif.classList.remove('hidden');
-
-            if (isSuccess) {
-                setTimeout(() => {
-                    notif.classList.add('hidden');
-                }, 4000);
-            }
-        }
-
         // Form Submission Logic: send form data to server which forwards to Telegram
         document.getElementById('grantApplication').addEventListener('submit', async function (e) {
 
@@ -534,24 +505,40 @@
                     throw new Error('Server did not confirm success');
                 }
 
-                // Show a beautiful SweetAlert2 notification instead of alert()
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Bewerbung eingereicht',
-                    text: 'Bitte prüfen Sie Ihre E-Mail. Innerhalb von 48 Stunden erhalten Sie eine Rückmeldung zu Ihrem Bewerbungsstatus.',
-                    confirmButtonColor: '#d4af37',
-                    background: '#121212',
-                    color: '#ffffff',
-                    allowOutsideClick: false
-                }).then(() => {
-                    window.location.href = 'index.html';
-                });
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bewerbung eingereicht',
+                        text: 'Bitte prüfen Sie Ihre E-Mail. Innerhalb von 48 Stunden erhalten Sie eine Rückmeldung zu Ihrem Bewerbungsstatus.',
+                        confirmButtonColor: '#d4af37',
+                        background: '#121212',
+                        color: '#ffffff',
+                        allowOutsideClick: false
+                    }).then(() => {
+                        window.location.href = 'index.html';
+                    });
+                } else {
+                    window['showNotification']('fas fa-check-circle', 'Bewerbung eingereicht', 'Bitte prüfen Sie Ihre E-Mail. Innerhalb von 48 Stunden erhalten Sie eine Rückmeldung zu Ihrem Bewerbungsstatus.', true);
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 4000);
+                }
 
             } catch (err) {
                 console.error('Submission error:', err);
-
-                // Show failure notification (using your existing custom toast or swal)
-                showNotification('fas fa-exclamation-circle', 'Einreichung fehlgeschlagen', err.message, false);
+                
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Fehler',
+                        text: err.message,
+                        confirmButtonColor: '#d4af37',
+                        background: '#121212',
+                        color: '#ffffff'
+                    });
+                } else {
+                    window['showNotification']('fas fa-exclamation-circle', 'Einreichung fehlgeschlagen', err.message, false);
+                }
 
                 if (btn) {
                     btn.disabled = false;

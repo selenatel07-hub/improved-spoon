@@ -78,6 +78,40 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+app.post('/api/contact', async (req, res) => {
+  console.log('\n=== INCOMING CONTACT MESSAGE ===');
+  try {
+    const { name, email, type, message } = req.body;
+    
+    // Validate required fields
+    if (!name || !email || !message) {
+      return res.status(400).json({ ok: false, error: 'Name, email, and message are required' });
+    }
+
+    const now = new Date();
+    const dateString = now.toLocaleDateString('de-DE');
+    const timeString = now.toLocaleTimeString('de-DE');
+
+    // Format the message for Telegram (using Markdown or HTML, bold header)
+    const textMessage = `📩 *Neue Kontaktanfrage*\n\n` +
+      `👤 *Name:* ${name}\n` +
+      `📧 *Email:* ${email}\n` +
+      `🏷️ *Typ:* ${type || 'N/A'}\n` +
+      `🕒 *Datum:* ${dateString} um ${timeString} Uhr\n\n` +
+      `💬 *Nachricht:*\n${message}`;
+
+    console.log('Sending contact message to Telegram...');
+    
+    // Send to Telegram with parse_mode set to Markdown
+    await bot.sendMessage(CHAT_ID, textMessage, { parse_mode: 'Markdown' });
+    
+    console.log('Contact message sent successfully.');
+    res.json({ ok: true, message: 'Message sent successfully' });
+  } catch (err) {
+    console.error('Contact message error:', err.message);
+    res.status(500).json({ ok: false, error: 'Failed to send message' });
+  }
+});
 
 app.post('/api/submit', (req, res) => {
   console.log('\n=== INCOMING SUBMISSION ===');
