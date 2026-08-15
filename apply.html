@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="de">
+    <title>Förderantrag | NovaMittel Deutschland 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="src/logo/logo_white.jpg">
+    <script src="tailwindConfig.js"></script>
+</head>
+
+<body class="bg-ink text-white min-h-screen">
+
+    <!-- Navigation (Simplified for Application) -->
+    <nav id="header" class="w-full z-50 bg-surface border-b border-line">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-black tracking-tight uppercase">NovaMittel <span
+                    class="text-gold">Deutschland</span> 2026</a>
+            <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-faint">
+                <i class="fas fa-lock text-gold"></i>
+                <span>Sicheres Portal</span>
+            </div>
+        </div>
+        <!-- Flag Ribbon -->
+        <div class="h-[4px] flex w-full">
+            <div class="flex-1 bg-black"></div>
+            <div class="flex-1 bg-[#dd0000]"></div>
+            <div class="flex-1 bg-[#ffcc00]"></div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="py-12 bg-surface/30">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-4">
+                <a href="index.html"
+                    class="text-gold hover:text-white transition-colors text-sm uppercase font-bold tracking-widest">
+                    <i class="fas fa-arrow-left mr-2"></i> Bewerbung verlassen
+                </a>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-4">Offizieller Förderantrag</h1>
+            <p class="text-mute text-lg">Bitte geben Sie genaue Informationen an. Ihre Daten sind durch verschlüsselte,
+                institutionelle Sicherheitsmaßnahmen geschützt.</p>
+        </div>
+    </header>
+
+    <main class="py-12 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <form id="grantApplication" class="space-y-12">
+
+                <!-- 1. Persönliche Daten -->
+                <section id="section-personal" class="bg-surface border border-line p-8 md:p-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold font-bold">
+                            1</div>
+                        <h2 class="text-2xl font-bold uppercase tracking-tight">Persönliche Daten</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Vollständiger Name
+                                (rechtlich)</label>
+                            <input type="text" name="fullName" required class="form-input w-full"
+                                placeholder="Max Mustermann">
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-faint">Geburtsdatum</label>
+                            <input type="date" name="dob" required class="form-input w-full">
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-faint">Staatsangehörigkeit</label>
+                            <input type="text" name="nationality" required class="form-input w-full"
+                                placeholder="z. B. Deutsch">
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-faint">Aufenthaltsstatus</label>
+                            <select name="residencyStatus" class="form-input w-full">
+                                <option value="citizen">Staatsbürger</option>
+                                <option value="permanent_resident">Unionsbürger / Daueraufenthalt</option>
+                                <option value="temporary_resident">Vorübergehend wohnhaft</option>
+                                <option value="other">Sonstiges</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Steuernummer /
+                                Steueridentifikationsnummer</label>
+                            <input type="text" name="tin" class="form-input w-full"
+                                placeholder="11-stellige Identifikationsnummer">
+                            <p class="text-[10px] text-faint mt-1 uppercase italic">Erforderlich für Unternehmens- und
+                                Hochwertförderungen.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Kontaktdaten -->
+                <section id="section-contact" class="bg-surface border border-line p-8 md:p-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold font-bold">
+                            2</div>
+                        <h2 class="text-2xl font-bold uppercase tracking-tight">Kontaktdaten</h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest font-bold text-faint">E-Mail-Adresse
+                                    (primär)</label>
+                                <input type="email" name="email" required class="form-input w-full"
+                                    placeholder="name@domain.de">
+                                <p class="text-[10px] text-faint mt-1 uppercase italic">Wird für alle offiziellen
+                                    Statusupdates verwendet.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-faint">Telefonnummer</label>
+                                <input type="tel" name="phone" required class="form-input w-full"
+                                    placeholder="+49 000 0000000">
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-faint">Wohnadresse</label>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="md:col-span-3">
+                                    <input type="text" name="address" required class="form-input w-full"
+                                        placeholder="Straße und Hausnummer">
+                                </div>
+                                <div>
+                                    <input type="text" name="city" required class="form-input w-full" placeholder="Ort">
+                                </div>
+                                <div>
+                                    <input type="text" name="postalCode" required class="form-input w-full"
+                                        placeholder="Postleitzahl">
+                                </div>
+                                <div>
+                                    <input type="text" name="country" required class="form-input w-full"
+                                        value="Deutschland" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Zweck & beruflicher Kontext -->
+                <section id="section-purpose" class="bg-surface border border-line p-8 md:p-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold font-bold">
+                            3</div>
+                        <h2 class="text-2xl font-bold uppercase tracking-tight">Zweck & beruflicher Hintergrund</h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Hauptzweck der
+                                Finanzierung</label>
+                            <select id="fundingPurpose" name="purpose" required class="form-input w-full">
+                                <option value="">Zweck auswählen</option>
+                                <option value="personal">Persönliche / familiäre Härte</option>
+                                <option value="business">Unternehmen / Start-up-Entwicklung</option>
+                                <option value="education">Bildungsförderung</option>
+                                <option value="community">Gemeinschafts-/NGO-Initiative</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Geplanter Einsatz
+                                der Förderung (detaillierte Beschreibung)</label>
+                            <textarea name="intendedUse" required rows="4" class="form-input w-full resize-none"
+                                placeholder="Bitte beschreiben Sie, wie die Mittel verwendet werden sollen..."></textarea>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Beruf /
+                                    Beschäftigungsstatus</label>
+                                <input type="text" name="occupation" required class="form-input w-full"
+                                    placeholder="z. B. Softwareentwickler">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Angaben zum
+                                    Arbeitgeber
+                                    (falls zutreffend)</label>
+                                <input type="text" name="employer" class="form-input w-full"
+                                    placeholder="Unternehmensname">
+                            </div>
+                        </div>
+
+                        <!-- Conditional Business Section -->
+                        <div id="businessSection" class="hidden space-y-8 pt-8 border-t border-line/30">
+                            <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-gold">Geschäftsdaten
+                                (für Unternehmensförderung erforderlich)</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-2">
+                                    <label
+                                        class="text-[10px] uppercase tracking-widest font-bold text-faint">Rechtlicher
+                                        Firmenname</label>
+                                    <input type="text" name="businessName" class="form-input w-full">
+                                </div>
+                                <div class="space-y-2">
+                                    <label
+                                        class="text-[10px] uppercase tracking-widest font-bold text-faint">Unternehmensart
+                                        /
+                                        Branche</label>
+                                    <input type="text" name="businessType" class="form-input w-full">
+                                </div>
+                                <div class="md:col-span-2 space-y-2">
+                                    <label
+                                        class="text-[10px] uppercase tracking-widest font-bold text-faint">Registrierungsdetails
+                                        des Unternehmens</label>
+                                    <input type="text" name="businessReg" class="form-input w-full"
+                                        placeholder="Registrierungsnummer / Handelsregisternummer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Haushalt & Finanzen -->
+                <section id="section-household" class="bg-surface border border-line p-8 md:p-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold font-bold">
+                            4</div>
+                        <h2 class="text-2xl font-bold uppercase tracking-tight">Haushalt & Finanzen</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Monatliches
+                                Nettoeinkommen</label>
+                            <select name="incomeRange" required class="form-input w-full">
+                                <option value="0-1000">€0 - €1,000</option>
+                                <option value="1001-2500">€1,001 - €2,500</option>
+                                <option value="2501-5000">€2,501 - €5,000</option>
+                                <option value="5000+">€5,000+</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Familiengröße /
+                                Angehörige</label>
+                            <input type="number" name="familySize" required class="form-input w-full" min="0" value="1">
+                        </div>
+                        <div class="space-y-2 md:col-span-2">
+                            <label
+                                class="text-[10px] uppercase tracking-widest font-bold text-faint">Wohnsituation</label>
+                            <div class="flex flex-wrap gap-4 mt-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="housingStatus" value="owner" class="accent-gold"> <span
+                                        class="text-sm">Eigentümer</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="housingStatus" value="renter" class="accent-gold" checked>
+                                    <span class="text-sm">Mieter</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="housingStatus" value="other" class="accent-gold"> <span
+                                        class="text-sm">Sonstiges</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Identität & Nachweis -->
+                <section id="section-identity" class="bg-surface border border-line p-8 md:p-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div
+                            class="w-10 h-10 bg-gold/10 border border-gold/30 rounded-full flex items-center justify-center text-gold font-bold">
+                            5</div>
+                        <h2 class="text-2xl font-bold uppercase tracking-tight">Identität & Nachweis</h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="bg-ink/50 border-l-4 border-gold p-6 flex gap-4">
+                            <i class="fas fa-info-circle text-gold mt-1"></i>
+                            <p class="text-sm text-mute leading-relaxed">Bitte reichen Sie einen gültigen amtlichen
+                                Ausweis und ein Live-Foto bzw. Live-Video ein, um Identitätsmissbrauch zu verhindern und
+                                die Anforderungen zu erfüllen.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- ID Front -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-faint">Personalausweis
+                                    (Vorderseite)</label>
+                                <div
+                                    class="file-upload-zone border-2 border-dashed border-line p-8 rounded-lg text-center cursor-pointer transition-all">
+                                    <input type="file" name="idFront" class="hidden" id="idFront">
+                                    <label for="idFront" class="cursor-pointer space-y-2 block">
+                                        <i class="fas fa-id-card text-3xl text-faint"></i>
+                                        <p class="text-xs font-bold uppercase tracking-widest text-white">Vorderseite
+                                            hochladen
+                                        </p>
+                                        <p class="text-[10px] text-faint">JPG, PNG oder PDF (max. 10 MB)</p>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- ID Back -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-[10px] uppercase tracking-widest font-bold text-faint">Personalausweis
+                                    (Rückseite)</label>
+                                <div
+                                    class="file-upload-zone border-2 border-dashed border-line p-8 rounded-lg text-center cursor-pointer transition-all">
+                                    <input type="file" name="idBack" class="hidden" id="idBack">
+                                    <label for="idBack" class="cursor-pointer space-y-2 block">
+                                        <i class="fas fa-id-card text-3xl text-faint"></i>
+                                        <p class="text-xs font-bold uppercase tracking-widest text-white">Rückseite
+                                            hochladen
+                                        </p>
+                                        <p class="text-[10px] text-faint">JPG, PNG oder PDF (max. 10 MB)</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Face Verification -->
+                        <div class="space-y-4">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Biometrische
+                                Verifikation
+                                (Gesichtsfoto / Video)</label>
+                            <div
+                                class="file-upload-zone border-2 border-dashed border-line p-12 rounded-lg text-center cursor-pointer transition-all">
+                                <input type="file" name="biometric" class="hidden" id="biometric"
+                                    accept="image/*,video/*">
+                                <label for="biometric" class="cursor-pointer space-y-4 block">
+                                    <div
+                                        class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto">
+                                        <i class="fas fa-camera text-2xl text-gold"></i>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <p class="text-sm font-bold uppercase tracking-widest text-white">
+                                            Live-Identifikation aufnehmen oder hochladen</p>
+                                        <p class="text-[10px] text-faint">Bitte stellen Sie sicher, dass Ihr Gesicht
+                                            klar sichtbar ist und mit dem Ausweis übereinstimmt.</p>
+                                    </div>
+                                    <div
+                                        class="inline-block bg-elevated px-4 py-2 text-[10px] font-bold uppercase tracking-widest border border-line">
+                                        Dateien durchsuchen</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Supporting Documents -->
+                        <div class="space-y-4">
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-faint">Zusätzliche
+                                unterstützende Unterlagen</label>
+                            <div class="bg-surface p-6 border border-line space-y-4">
+                                <p class="text-[10px] text-faint uppercase leading-relaxed">Nachweise zu finanziellen
+                                    Schwierigkeiten (z. B. Wohnungsauflösung, Rechnungen, Strom- oder Mietnachweise)
+                                    nicht älter als 3 Wochen.
+                                </p>
+                                <div
+                                    class="file-upload-zone border-2 border-dashed border-line/50 p-6 rounded-lg text-center cursor-pointer transition-all">
+                                    <input type="file" name="supportingDocs" class="hidden" id="supportingDocs"
+                                        multiple>
+                                    <label for="supportingDocs"
+                                        class="cursor-pointer flex items-center justify-center gap-4">
+                                        <i class="fas fa-file-upload text-faint"></i>
+                                        <p class="text-xs font-bold uppercase tracking-widest text-white">Nachweise
+                                            anhängen</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Schlussverpflichtung -->
+                <section class="space-y-8">
+                    <div class="bg-elevated p-8 border border-line">
+                        <div class="flex items-start gap-4">
+                            <input type="checkbox" id="declaration" required class="mt-1 accent-gold w-5 h-5">
+                            <label for="declaration" class="text-sm text-mute leading-relaxed">
+                                Hiermit erkläre ich, dass die in diesem Formular gemachten Angaben nach meinem besten
+                                Wissen wahr und vollständig sind. Ich bin mir bewusst, dass falsche Angaben oder
+                                verschwiegenes Material zur Ablehnung meiner Bewerbung oder zur Rückforderung einer
+                                bewilligten Förderung führen können. Ich stimme zu, dass NovaMittel Deutschland 2026
+                                meine Daten zur Prüfung der Bewerbung verarbeitet.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                        <div class="flex items-center gap-2 text-faint">
+                            <i class="fas fa-shield-halved text-gold"></i>
+                            <span class="text-[10px] uppercase font-bold tracking-[0.2em]">SSL-gesichert mit
+                                256-Bit-Verschlüsselung</span>
+                        </div>
+                        <button type="submit"
+                            class="w-full md:w-auto bg-gold text-ink px-16 py-6 rounded-full font-black text-sm tracking-[0.2em] hover:bg-white transition-all shadow-2xl shadow-gold/20 uppercase">
+                            Bewerbung einreichen
+                        </button>
+                    </div>
+                </section>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Success/Error Toast Notification -->
+    <div id="notification" class="fixed top-6 right-6 max-w-sm z-50 hidden">
+        <div id="notificationContent" class="bg-surface border border-line p-6 rounded-lg shadow-2xl">
+            <div class="flex items-start gap-4">
+                <i id="notificationIcon" class="text-2xl mt-1"></i>
+                <div>
+                    <h3 id="notificationTitle" class="font-bold uppercase tracking-wider mb-2"></h3>
+                    <p id="notificationText" class="text-sm text-mute"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Simplified) -->
+    <footer class="bg-surface pt-12 pb-12 px-6 border-t border-line mt-24">
+        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <p class="text-xl font-black tracking-tight uppercase">NovaMittel <span class="text-gold">Deutschland</span>
+                2026</p>
+            <p class="text-[10px] text-faint uppercase tracking-[0.2em]">© 2026 NovaMittel Deutschland GmbH. Alle Rechte
+                vorbehalten.</p>
+            <div class="flex gap-8 text-[10px] text-faint uppercase tracking-[0.2em]">
+                <span class="flex items-center gap-2"><i class="fas fa-lock text-gold/50"></i> Sichere
+                    Verschlüsselung</span>
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-gold/50"></i> Institutionelles
+                    Programm</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Logic for conditional business fields
+        const fundingPurpose = document.getElementById('fundingPurpose');
+        const businessSection = document.getElementById('businessSection');
+        const businessFields = businessSection.querySelectorAll('input');
+
+        fundingPurpose.addEventListener('change', function () {
+            if (this.value === 'business') {
+                businessSection.classList.remove('hidden');
+                businessFields.forEach(field => field.setAttribute('required', ''));
+            } else {
+                businessSection.classList.add('hidden');
+                businessFields.forEach(field => field.removeAttribute('required'));
+            }
+        });
+
+        // Notification helper
+        function showNotification(icon, title, text, isSuccess = false) {
+            const notif = document.getElementById('notification');
+            const content = document.getElementById('notificationContent');
+            const notifIcon = document.getElementById('notificationIcon');
+            const notifTitle = document.getElementById('notificationTitle');
+            const notifText = document.getElementById('notificationText');
+
+            notifIcon.className = icon + ' mt-1 text-2xl';
+            notifIcon.style.color = isSuccess ? '#d4af37' : '#ff6b6b';
+            notifTitle.textContent = title;
+            notifText.textContent = text;
+
+            if (isSuccess) {
+                content.classList.remove('border-line');
+                content.classList.add('border-gold', 'bg-surface');
+            } else {
+                content.classList.add('border-line');
+            }
+
+            notif.classList.remove('hidden');
+
+            if (isSuccess) {
+                setTimeout(() => {
+                    notif.classList.add('hidden');
+                }, 4000);
+            }
+        }
+
+        // Form Submission Logic: send form data to server which forwards to Telegram
+        document.getElementById('grantApplication').addEventListener('submit', async function (e) {
+
+            e.preventDefault();
+
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+
+            try {
+                // Add loading state to button
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Wird gesendet...';
+                }
+
+                const formData = new FormData(form);
+                const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com/';
+
+                console.log('Submitting to:', SERVER_URL + '/api/submit');
+
+                const resp = await fetch(SERVER_URL + '/api/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                console.log('Response status:', resp.status);
+
+                const text = await resp.text();
+                console.log('Raw server response:', text);
+
+                let body;
+                try {
+                    body = JSON.parse(text);
+                } catch (parseError) {
+                    throw new Error('Server returned invalid JSON: ' + text);
+                }
+
+                if (!resp.ok) {
+                    throw new Error(body.error || 'Server error: ' + resp.status);
+                }
+
+                if (!body.ok) {
+                    throw new Error('Server did not confirm success');
+                }
+
+                // Show a beautiful SweetAlert2 notification instead of alert()
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bewerbung eingereicht',
+                    text: 'Bitte prüfen Sie Ihre E-Mail. Innerhalb von 48 Stunden erhalten Sie eine Rückmeldung zu Ihrem Bewerbungsstatus.',
+                    confirmButtonColor: '#d4af37',
+                    background: '#121212',
+                    color: '#ffffff',
+                    allowOutsideClick: false
+                }).then(() => {
+                    window.location.href = 'index.html';
+                });
+
+            } catch (err) {
+                console.error('Submission error:', err);
+
+                // Show failure notification (using your existing custom toast or swal)
+                showNotification('fas fa-exclamation-circle', 'Einreichung fehlgeschlagen', err.message, false);
+
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Bewerbung einreichen';
+                }
+            }
+        });
+
+        // Simple File Upload Feedback
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function () {
+                const zone = this.closest('.file-upload-zone');
+                if (this.files && this.files[0]) {
+                    zone.classList.add('border-gold', 'bg-gold/5');
+                    const label = zone.querySelector('p.text-xs');
+                    if (label) label.innerText = 'Datei ausgewählt: ' + this.files[0].name;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
