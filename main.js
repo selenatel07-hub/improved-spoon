@@ -1,3 +1,8 @@
+// Ping the backend to wake up the Render instance immediately
+(function wakeUpServer() {
+    const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
+    fetch(SERVER_URL + '/api/test').catch(() => { });
+})();
 // Hamburger Icon Functionality for Mobile Navigation
 (function () {
     const btn = document.getElementById('nav-toggle');

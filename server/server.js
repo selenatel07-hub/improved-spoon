@@ -78,17 +78,6 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-app.post('/api/test-post', (req, res) => {
-  console.log('*** POST TEST RECEIVED ***');
-
-  res.status(200).json({
-    ok: true,
-    message: 'POST response is working',
-    timestamp: new Date().toISOString()
-  });
-
-  console.log('*** POST TEST RESPONSE SENT ***');
-});
 
 app.post('/api/submit', (req, res) => {
   console.log('\n=== INCOMING SUBMISSION ===');

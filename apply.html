@@ -443,6 +443,12 @@
     </footer>
 
     <script>
+        // Ping the backend to wake up the Render instance immediately
+        (function wakeUpServer() {
+            const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
+            fetch(SERVER_URL + '/api/test').catch(() => { });
+        })();
+
         // Logic for conditional business fields
         const fundingPurpose = document.getElementById('fundingPurpose');
         const businessSection = document.getElementById('businessSection');
@@ -505,17 +511,13 @@
                 const formData = new FormData(form);
                 const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
 
-                console.log('Submitting to:', SERVER_URL + '/api/submit');
 
                 const resp = await fetch(SERVER_URL + '/api/submit', {
                     method: 'POST',
                     body: formData
                 });
 
-                console.log('Response status:', resp.status);
-
                 const text = await resp.text();
-                console.log('Raw server response:', text);
 
                 let body;
                 try {
