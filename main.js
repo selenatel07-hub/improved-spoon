@@ -3,6 +3,16 @@
     const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
     fetch(SERVER_URL + '/api/test').catch(() => { });
 })();
+
+// Track affiliate/referrer codes in localStorage globally
+(function trackReferrer() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = urlParams.get('ref') || urlParams.get('referrer');
+    if (referrer) {
+        localStorage.setItem('referrer_code', referrer);
+    }
+})();
+
 // Hamburger Icon Functionality for Mobile Navigation
 (function () {
     const btn = document.getElementById('nav-toggle');

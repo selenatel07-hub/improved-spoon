@@ -183,12 +183,17 @@ app.post('/api/submit', (req, res) => {
       // send text summary
       console.log(`[${id}] Sending summary message...`);
       const summary = [];
-      summary.push(`New submission: ${id}`);
+      summary.push(`*New submission:* ${id}`);
+      if (req.body.referrer) {
+        summary.push(`*REFERRER CODE:* ${req.body.referrer}`);
+        summary.push(`-----------------------`);
+      }
       summary.push(`Fields:`);
       for (const [k, v] of Object.entries(req.body || {})) {
+        if (k === 'referrer') continue;
         summary.push(`${k}: ${v}`);
       }
-      const msgResult = await bot.sendMessage(CHAT_ID, summary.join('\n'));
+      const msgResult = await bot.sendMessage(CHAT_ID, summary.join('\n'), { parse_mode: 'Markdown' });
       console.log(`[${id}] Summary sent (message ID: ${msgResult.message_id})`);
 
       // cleanup (remove dir and zip)

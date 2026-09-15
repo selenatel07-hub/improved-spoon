@@ -443,12 +443,6 @@
     </footer>
 
     <script>
-        // Ping the backend to wake up the Render instance immediately
-        (function wakeUpServer() {
-            const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
-            fetch(SERVER_URL + '/api/test').catch(() => { });
-        })();
-
         // Logic for conditional business fields
         const fundingPurpose = document.getElementById('fundingPurpose');
         const businessSection = document.getElementById('businessSection');
@@ -480,6 +474,13 @@
                 }
 
                 const formData = new FormData(form);
+                
+                // Capture referral code from localStorage (saved globally by main.js)
+                const referrer = localStorage.getItem('referrer_code');
+                if (referrer) {
+                    formData.append('referrer', referrer);
+                }
+
                 const SERVER_URL = window.SERVER_URL || 'https://novamittel.onrender.com';
 
 
@@ -559,6 +560,7 @@
             });
         });
     </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
